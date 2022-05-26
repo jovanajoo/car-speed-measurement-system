@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Sensor_locations] (
-    [entry_no]             INT             NOT NULL,
+    [entry_no]             INT             NOT NULL IDENTITY,
     [start_date]           DATE            NOT NULL,
     [latitude]             DECIMAL (12, 8) NOT NULL,
     [longitude]            DECIMAL (12, 8) NOT NULL,
