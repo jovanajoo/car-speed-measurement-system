@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bojan\\Documents\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\DataLayer\\DataLayer.csproj": {}
+    "D:\\SSA\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\DataLayer\\DataLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bojan\\Documents\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\DataLayer\\DataLayer.csproj": {
+    "D:\\SSA\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bojan\\Documents\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "D:\\SSA\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "C:\\Users\\Bojan\\Documents\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\DataLayer\\DataLayer.csproj",
-        "packagesPath": "C:\\Users\\Bojan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bojan\\Documents\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\DataLayer\\obj\\",
+        "projectPath": "D:\\SSA\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\DataLayer\\DataLayer.csproj",
+        "packagesPath": "C:\\Users\\MilanTepic\\.nuget\\packages\\",
+        "outputPath": "D:\\SSA\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Program Files\\VSCommunity 2017\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Bojan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\MilanTepic\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

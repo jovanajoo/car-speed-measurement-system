@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    public class Sensor_Reading
+    public class SensorReading
     {
         public DateTime timestemp { get; set; }
         public decimal measuredSpeed { get; set; }

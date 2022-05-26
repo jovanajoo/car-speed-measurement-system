@@ -1,3 +1,7 @@
+using BusinessLayer;
+using BusinessLayer.Interfaces;
+using DataLayer;
+using DataLayer.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +36,19 @@ namespace WEB_API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WEB_API", Version = "v1" });
             });
+
+            services.AddScoped<IAdministratorRepository, AdministratorRepository>();
+            services.AddScoped<IAdministratorBusiness, AdministratorBusiness>();
+
+
+            services.AddScoped<ISensorRepository, SensorRepository>();
+            services.AddScoped<ISensorBusiness, SensorBusiness>();
+
+            services.AddScoped<ISensorLocationRepository, SensorLocationRepository>();
+            services.AddScoped<ISensorLocationBusiness, SensorLocationBusiness>();
+
+            services.AddScoped<ISensorReadingRepository, SensorReadingRepository>();
+            services.AddScoped<ISensorReadingBusiness, SensorReadingBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    public class Sensor_Location
+    public class SensorLocation
     {
         public int entryNo { get; set; }
         public DateTime startDate { get; set; }

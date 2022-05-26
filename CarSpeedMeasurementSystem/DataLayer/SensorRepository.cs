@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿using DataLayer.Interfaces;
+using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class SensorRepository
+    public class SensorRepository:ISensorRepository
     {
         public List<Sensor> GetAllSensors()
         {
@@ -56,14 +57,14 @@ namespace DataLayer
                 return sqlCommand.ExecuteNonQuery();
             }
         }
-        public int DeleteSensor(int id)
+        public int DeleteSensor(int serial_no)
         {
             using (SqlConnection sqlConnection = new SqlConnection(Constants.connectionString))
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandText = string.Format("DELETE FROM Sensors WHERE serial_no = {0}", id);
+                sqlCommand.CommandText = string.Format("DELETE FROM Sensors WHERE serial_no = {0}", serial_no);
 
                 return sqlCommand.ExecuteNonQuery();
             }

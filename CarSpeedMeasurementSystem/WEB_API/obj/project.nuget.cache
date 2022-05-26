@@ -1,15 +1,25 @@
 {
   "version": 2,
-  "dgSpecHash": "Z8Vd7keTkY9hQXJ3yUaYvgdFVXkfR84fgwbB2ZDdvf70bTn9yZALQntZf3OM2VIC/n22hwp7P8dWOAcpUKHZNw==",
+  "dgSpecHash": "abu/tyzNxY6MlKzx31C6ygpCLgGglivREa1euA1yTKiYhO3EbWikKw7KMD+DznMP8SR4Dahxt15W9nDurWrWOA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bojan\\Documents\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\WEB_API\\WEB_API.csproj",
+  "projectFilePath": "D:\\SSA\\car-speed-measurement-system\\CarSpeedMeasurementSystem\\WEB_API\\WEB_API.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Bojan\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
-    "C:\\Users\\Bojan\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\Bojan\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
-    "C:\\Users\\Bojan\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
-    "C:\\Users\\Bojan\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
-    "C:\\Users\\Bojan\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\MilanTepic\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.15\\microsoft.netcore.app.host.win-x64.5.0.15.nupkg.sha512"
   ],
   "logs": []
 }

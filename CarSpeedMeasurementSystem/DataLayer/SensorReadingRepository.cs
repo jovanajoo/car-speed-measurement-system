@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿using DataLayer.Interfaces;
+using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class SensorReadingRepository
+    public class SensorReadingRepository:ISensorReadingRepository
     {
-        public List<Sensor_Reading> GetAllSensorReadings()
+        public List<SensorReading> GetAllSensorReadings()
         {
-            List<Sensor_Reading> listOfSensorReadings = new List<Sensor_Reading>();
+            List<SensorReading> listOfSensorReadings = new List<SensorReading>();
             using (SqlConnection sqlConnection = new SqlConnection(Constants.connectionString))
             {
                 sqlConnection.Open();
@@ -23,7 +24,7 @@ namespace DataLayer
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                 while (sqlDataReader.Read())
                 {
-                    Sensor_Reading r = new Sensor_Reading();
+                    SensorReading r = new SensorReading();
                     r.timestemp = sqlDataReader.GetDateTime(0);
                     r.measuredSpeed = sqlDataReader.GetDecimal(1);
                     r.speeding = sqlDataReader.GetDecimal(2);
@@ -34,7 +35,7 @@ namespace DataLayer
             }
             return listOfSensorReadings;
         }
-        public int InsertSensorReading(Sensor_Reading r)
+        public int InsertSensorReading(SensorReading r)
         {
             using (SqlConnection sqlConnection = new SqlConnection(Constants.connectionString))
             {

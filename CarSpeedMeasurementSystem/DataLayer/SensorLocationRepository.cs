@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿using DataLayer.Interfaces;
+using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class SensorLocationsRepository
+    public class SensorLocationRepository:ISensorLocationRepository
     {
-        public List<Sensor_Location> GetAllSensorLocations()
+        public List<SensorLocation> GetAllSensorLocations()
         {
-            List<Sensor_Location> listOfSensorLocations = new List<Sensor_Location>();
+            List<SensorLocation> listOfSensorLocations = new List<SensorLocation>();
             using (SqlConnection sqlConnection = new SqlConnection(Constants.connectionString))
             {
                 sqlConnection.Open();
@@ -23,14 +24,15 @@ namespace DataLayer
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                 while (sqlDataReader.Read())
                 {
-                    Sensor_Location l = new Sensor_Location();
+                    SensorLocation l = new SensorLocation();
                     l.entryNo = sqlDataReader.GetInt32(0);
                     l.startDate = sqlDataReader.GetDateTime(1);
                     l.latitude = sqlDataReader.GetDecimal(2);
                     l.longitude = sqlDataReader.GetDecimal(3);
                     l.active = sqlDataReader.GetBoolean(4);
                     l.maxSpeed = sqlDataReader.GetDecimal(5);
-                    l.endDate = sqlDataReader.GetDateTime(6);
+                    if (!l.active)
+                        l.endDate = sqlDataReader.GetDateTime(6);
                     l.description = sqlDataReader.GetString(7);
                     l.sensorSerialNumber = sqlDataReader.GetInt32(8);
 
@@ -39,7 +41,7 @@ namespace DataLayer
             }
             return listOfSensorLocations;
         }
-        public int InsertSensorLocation(Sensor_Location l)
+        public int InsertSensorLocation(SensorLocation l)
         {
             using (SqlConnection sqlConnection = new SqlConnection(Constants.connectionString))
             {
@@ -51,7 +53,7 @@ namespace DataLayer
                 return sqlCommand.ExecuteNonQuery();
             }
         }
-        public int UpdateSensorLocation(Sensor_Location l)
+        public int UpdateSensorLocation(SensorLocation l)
         {
             using (SqlConnection sqlConnection = new SqlConnection(Constants.connectionString))
             {

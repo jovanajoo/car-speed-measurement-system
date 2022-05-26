@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿using DataLayer.Interfaces;
+using DataLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class AdministratorRepository
+    public class AdministratorRepository:IAdministratorRepository
     {
         public List<Administrator> GetAllAdministrators()
         {
