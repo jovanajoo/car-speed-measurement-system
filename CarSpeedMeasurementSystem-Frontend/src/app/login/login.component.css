@@ -1,0 +1,18 @@
+.container {
+    height: 80%;
+}
+
+.form {
+    background-color: var(--green-light);
+}
+
+.login-btn {
+    background-color: var(--green-dark);
+    color: rgb(29, 29, 29);
+    border: 0;
+}
+
+.login-btn:hover {
+    background-color: var(--green-medium);
+    color: rgb(29, 29, 29);
+}

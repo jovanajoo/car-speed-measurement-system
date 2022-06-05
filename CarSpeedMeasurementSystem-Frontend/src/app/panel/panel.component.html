@@ -1,0 +1,155 @@
+<div class="container-fluid">
+    <div class="container py-4 px-0">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        CHARTS
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="container pb-2">
+                    <div class="accordion" id="sidePanelAccordion">
+                        <!-- SENSORS -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="accordion-sensors-heading">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panel-sensors" aria-expanded="true" aria-controls="panel-sensors">
+                                    Sensors
+                                </button>
+                            </h2>
+                            <div id="panel-sensors" class="accordion-collapse collapse show"
+                                aria-labelledby="accordion-sensors-heading" data-bs-parent="#sidePanelAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    All Sensors
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text">Display a list of all sensors</p>
+                                                    <a href="#" class="btn btn-primary">Go</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Add Sensor
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text">Add a new sensor</p>
+                                                    <a href="#" class="btn btn-primary">Go</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- SENSORS LOCATIONS-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="accordion-sensors-loc-heading">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panel-sensors-loc" aria-expanded="false"
+                                    aria-controls="panel-sensors-loc">
+                                    Sensors locations
+                                </button>
+                            </h2>
+                            <div id="panel-sensors-loc" class="accordion-collapse collapse"
+                                aria-labelledby="accordion-sensors-loc-heading" data-bs-parent="#sidePanelAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    All Sensor Locations
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text">Display a list of all sensors locations</p>
+                                                    <a href="#" class="btn btn-primary">Go</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ALL SENSORS READINGS -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="accordion-sensor-read-heading">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panel-sensor-read" aria-expanded="false"
+                                    aria-controls="panel-sensor-read">
+                                    Readings
+                                </button>
+                            </h2>
+                            <div id="panel-sensor-read" class="accordion-collapse collapse"
+                                aria-labelledby="accordion-sensor-read-heading" data-bs-parent="#sidePanelAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    All Sensor Readings
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text">Display a list of all sensor readings</p>
+                                                    <a href="#" class="btn btn-primary">Go</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- USERS -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="accordion-users-heading">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panel-users" aria-expanded="false" aria-controls="panel-users">
+                                    Users
+                                </button>
+                            </h2>
+                            <div id="panel-users" class="accordion-collapse collapse"
+                                aria-labelledby="accordion-users-heading" data-bs-parent="#sidePanelAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    All Users
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text">Display a list of all users</p>
+                                                    <a href="#" class="btn btn-primary">Go</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Add User
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text">Add a new user</p>
+                                                    <a href="#" class="btn btn-primary">Go</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container py-2">
+                    <button routerLink="/login" class="btn w-100 fs-4 fw-bold logout-btn">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
