@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Sensor } from '../models/Sensor';
+import { SensorsService } from '../sensors.service';
 
 @Component({
   selector: 'app-sensors',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SensorsComponent implements OnInit {
 
-  constructor() { }
+  sensors?: Sensor[];
+
+  constructor(private sensorService: SensorsService) { }
 
   ngOnInit(): void {
+    this.getSensors();
+  }
+
+  deleteSensor(serialNo?: any): void {
+    this.sensorService.deleteSensorBySerialNo(serialNo).subscribe(res => {
+      this.getSensors();
+    });
+  }
+
+  getSensors(): void {
+    this.sensorService.getAllSensors().subscribe(data => {
+      this.sensors = data;
+    });
   }
 
 }
