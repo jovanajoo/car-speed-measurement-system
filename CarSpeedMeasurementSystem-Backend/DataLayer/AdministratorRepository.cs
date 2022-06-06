@@ -54,7 +54,7 @@ namespace DataLayer
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandText = string.Format("UPDATE Administrators SET fullName = '{0}', email = '{1}', username = '{2}', password = '{3}' WHERE admin_id = {4}", a.fullName, a.email, a.username, a.password, a.adminId);
+                sqlCommand.CommandText = string.Format("UPDATE Administrators SET full_name = '{0}', email = '{1}', username = '{2}', password = '{3}' WHERE admin_id = {4}", a.fullName, a.email, a.username, a.password, a.adminId);
 
                 return sqlCommand.ExecuteNonQuery();
             }

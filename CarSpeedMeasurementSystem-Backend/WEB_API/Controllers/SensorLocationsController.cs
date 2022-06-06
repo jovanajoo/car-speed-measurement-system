@@ -30,7 +30,7 @@ namespace WEB_API.Controllers
             return this.sensorLocationBusiness.InsertSensorLocation(l);
         }
 
-        [HttpPatch("Update")]
+        [HttpPut("Update")]
         public bool UpdateSensorLocation([FromBody] SensorLocation l)
         {
             return this.sensorLocationBusiness.UpdateSensorLocation(l);

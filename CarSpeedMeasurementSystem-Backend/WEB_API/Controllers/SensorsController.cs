@@ -36,7 +36,7 @@ namespace WEB_API.Controllers
             return this.sensorBusiness.InsertSensor(sernsor);
         }
 
-        [HttpPatch("Update")]
+        [HttpPut("Update")]
         public bool UpdateSensor([FromBody] Sensor sernsor)
         {
             return this.sensorBusiness.UpdateSensor(sernsor);

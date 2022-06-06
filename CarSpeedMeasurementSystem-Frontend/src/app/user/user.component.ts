@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../models/User';
 import { UsersService } from '../users.service';
+declare var $: any;
 
 @Component({
   selector: 'app-user',
@@ -31,15 +32,20 @@ export class UserComponent implements OnInit {
     });
   }
 
-  updateUser(user?: User) {
+  updateUser() {
     this.user!.fullName = this.fullName.value;
     this.user!.email = this.email.value;
-    console.log(this.user);
-    this.usersService.updateUser(user).subscribe(res => {
-      this.getUser(user?.adminId);
-      console.log(res);
-      console.log(user?.adminId);
+    this.usersService.updateUser(this.user).subscribe(res => {
+      this.getUser(this.user?.adminId);
+      this.toggleToast();
     });
+  }
+
+  toggleToast() {
+    $('.toast').toggleClass('show');
+    setTimeout(() => {
+      $('.toast').toggleClass('show');
+    }, 2500);
   }
 
 }

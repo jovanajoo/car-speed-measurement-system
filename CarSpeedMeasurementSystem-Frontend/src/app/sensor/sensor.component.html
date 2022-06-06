@@ -1,22 +1,37 @@
-<div class="container d-flex align-items-center mt-3 flex-column">
-    <div class="card form w-50 py-3 px-5 mb-3 d-flex flex-row justify-content-evenly">
-        <button routerLink="/sensors" class="btn btn-secondary w-25"><i class="bi bi-stopwatch-fill"></i>
-            Sensors</button>
-        <button routerLink="/panel" class="btn btn-secondary w-25"><i class="bi bi-grid-1x2-fill"></i> Panel</button>
+<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 100px; top: 0; right: 0;">
+    <div class="container d-flex align-items-center mt-3 flex-column">
+        <div class="card form w-50 py-3 px-5 mb-3 d-flex flex-row justify-content-evenly">
+            <button routerLink="/sensors" class="btn btn-secondary w-25"><i class="bi bi-stopwatch-fill"></i>
+                Sensors</button>
+            <button routerLink="/panel" class="btn btn-secondary w-25"><i class="bi bi-grid-1x2-fill"></i>
+                Panel</button>
+        </div>
+        <div class="card form w-50 py-2 px-5">
+            <h3 class=" text-center display-4">Sensor</h3>
+            <form action="">
+                <label class="form-label" for="serialNo" class="fs-5 py-2">Serial Number:</label>
+                <input type="text" name="serialNo" id="serialNo" class="form-control" value="{{sensor?.serialNo}}"
+                    readonly>
+                <br>
+                <label class="form-label" for="model" class="fs-5 py-2">Model:</label>
+                <input type="text" name="model" id="model" class="form-control" [formControl]="model"
+                    value="{{sensor?.model}}">
+                <br>
+                <label class="form-label" for="description" class="fs-5 py-2">Description:</label>
+                <textarea class="form-control" id="description" [formControl]="description"
+                    rows="3">{{sensor?.description}}</textarea>
+                <br>
+                <button type='button' class="btn my-3 w-100 fs-4 fw-bold btn-primary"
+                    (click)="updateSensor()">Update</button>
+            </form>
+        </div>
     </div>
-    <div class="card form w-50 py-2 px-5">
-        <h3 class=" text-center display-4">Sensor</h3>
-        <form action="">
-            <label class="form-label" for="serialNo" class="fs-5 py-2">Serial Number:</label>
-            <input type="text" name="serialNo" id="serialNo" class="form-control" value="{{sensor?.serialNo}}" readonly>
-            <br>
-            <label class="form-label" for="model" class="fs-5 py-2">Model:</label>
-            <input type="text" name="model" id="model" class="form-control" value="{{sensor?.model}}">
-            <br>
-            <label class="form-label" for="description" class="fs-5 py-2">Description:</label>
-            <textarea class="form-control" id="description" rows="3">{{sensor?.description}}</textarea>
-            <br>
-            <button type='button' class="btn my-3 w-100 fs-4 fw-bold btn-primary">Update</button>
-        </form>
+    <div class="toast">
+        <div class="toast-header">
+            <strong class="mr-auto">Success</strong>
+        </div>
+        <div class="toast-body">
+            Sensor successfully updated!
+        </div>
     </div>
 </div>

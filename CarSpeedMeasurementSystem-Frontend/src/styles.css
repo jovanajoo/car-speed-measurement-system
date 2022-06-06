@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+.toast {
+    transition: opacity 400ms ease-in-out !important;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    display: block;
+}
+
+.toast:not(.show) {
+    opacity: 0;
+    display: block;
+}
+
+.toast .show {
+    opacity: 1;
+}
+
+.toast>.toast-header {
+    background-color: var(--green-dark);
+    color: black;
+}

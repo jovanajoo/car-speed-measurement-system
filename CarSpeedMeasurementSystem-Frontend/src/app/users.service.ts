@@ -11,8 +11,10 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  }
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>('http://localhost:5000/api/administrators/get');
@@ -26,7 +28,7 @@ export class UsersService {
     return this.http.delete('http://localhost:5000/api/administrators/delete/' + adminId);
   }
 
-  updateUser(user?: User): Observable<any> {
-    return this.http.patch('http://localhost:5000/api/administrators/update', user, this.httpOptions);
+  updateUser(user?: User): Observable<User> {
+    return this.http.put<User>('http://localhost:5000/api/administrators/update', JSON.stringify(user), this.httpOptions);
   }
 }

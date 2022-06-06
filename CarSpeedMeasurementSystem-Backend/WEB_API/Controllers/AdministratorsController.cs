@@ -36,7 +36,7 @@ namespace WEB_API.Controllers
             return this.administratorBusiness.InsertAdministrator(administrator);
         }
 
-        [HttpPatch("Update")]
+        [HttpPut("Update")]
         public bool UpdateAdministrator([FromBody] Administrator administrator)
         {
             return this.administratorBusiness.UpdateAdministrator(administrator);
