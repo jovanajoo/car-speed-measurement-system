@@ -31,4 +31,8 @@ export class UsersService {
   updateUser(user?: User): Observable<User> {
     return this.http.put<User>('http://localhost:5000/api/administrators/update', JSON.stringify(user), this.httpOptions);
   }
+
+  insertUser(user?: User): Observable<User> {
+    return this.http.post<User>('http://localhost:5000/api/administrators/insert', JSON.stringify(user), this.httpOptions);
+  }
 }

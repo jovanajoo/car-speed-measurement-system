@@ -14,14 +14,20 @@ export class UserComponent implements OnInit {
 
   user?: User;
 
+  username = new FormControl('');
   fullName = new FormControl('');
   email = new FormControl('');
+
+  action = '';
 
   constructor(private usersService: UsersService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('admin_id'));
-    this.getUser(id);
+    this.action = String(this.route.snapshot.paramMap.get('action'));
+    if (this.action == 'update') {
+      const id = Number(this.route.snapshot.paramMap.get('admin_id'));
+      this.getUser(id);
+    }
   }
 
   getUser(adminId?: number): void {
@@ -37,6 +43,18 @@ export class UserComponent implements OnInit {
     this.user!.email = this.email.value;
     this.usersService.updateUser(this.user).subscribe(res => {
       this.getUser(this.user?.adminId);
+      this.toggleToast();
+    });
+  }
+
+  insertUser() {
+    const newUser: User = new User();
+    newUser!.username = this.fullName.value;
+    newUser!.fullName = this.fullName.value;
+    newUser!.email = this.email.value;
+    this.usersService.insertUser(newUser).subscribe(res => {
+      // this.getUser(newUser.adminId);
+      console.log(res);
       this.toggleToast();
     });
   }

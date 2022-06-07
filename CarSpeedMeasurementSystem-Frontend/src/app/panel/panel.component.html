@@ -1,20 +1,20 @@
 <div class="container-fluid">
     <div class="container py-4">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
                         <h1>CHARTS</h1>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="container pb-2">
                     <div class="accordion" id="sidePanelAccordion">
                         <!-- SENSORS -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="accordion-sensors-heading">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panel-sensors" aria-expanded="true" aria-controls="panel-sensors">
                                     Sensors
                                 </button>
@@ -43,7 +43,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <p class="card-text">Add a new sensor</p>
-                                                    <a href="#" class="btn btn-primary">Go</a>
+                                                    <a routerLink="/sensor/insert" class="btn btn-primary">Go</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -139,7 +139,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <p class="card-text">Add a new user</p>
-                                                    <a href="#" class="btn btn-primary">Go</a>
+                                                    <a routerLink="/user/insert" class="btn btn-primary">Go</a>
                                                 </div>
                                             </div>
                                         </div>

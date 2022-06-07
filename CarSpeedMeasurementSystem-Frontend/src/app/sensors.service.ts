@@ -32,4 +32,8 @@ export class SensorsService {
     return this.http.put<Sensor>('http://localhost:5000/api/sensors/update', JSON.stringify(sensor), this.httpOptions);
   }
 
+  insertSensor(sensor?: Sensor): Observable<Sensor> {
+    return this.http.post<Sensor>('http://localhost:5000/api/sensors/insert', JSON.stringify(sensor), this.httpOptions);
+  }
+
 }

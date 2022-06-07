@@ -14,14 +14,20 @@ export class SensorComponent implements OnInit {
 
   sensor?: Sensor;
 
+  serialNo = new FormControl('');
   model = new FormControl('');
   description = new FormControl('');
+
+  action = '';
 
   constructor(private sensorService: SensorsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const serialNo = Number(this.route.snapshot.paramMap.get('serial_no'));
-    this.getSensor(serialNo);
+    this.action = String(this.route.snapshot.paramMap.get('action'));
+    if (this.action == 'update') {
+      const serialNo = Number(this.route.snapshot.paramMap.get('serial_no'));
+      this.getSensor(serialNo);
+    }
   }
 
   getSensor(sensorNo?: number): void {
@@ -37,6 +43,18 @@ export class SensorComponent implements OnInit {
     this.sensor!.description = this.description.value;
     this.sensorService.updateSensor(this.sensor).subscribe(res => {
       this.getSensor(Number(this.sensor?.serialNo));
+      this.toggleToast();
+    });
+  }
+
+  insertSensor() {
+    const newSensor: Sensor = new Sensor();
+    newSensor!.serialNo = this.serialNo.value;
+    newSensor!.model = this.model.value;
+    newSensor!.description = this.description.value;
+    console.log(newSensor);
+    this.sensorService.insertSensor(newSensor).subscribe(res => {
+      this.getSensor(Number(newSensor.serialNo));
       this.toggleToast();
     });
   }

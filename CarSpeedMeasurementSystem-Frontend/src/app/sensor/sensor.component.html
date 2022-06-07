@@ -10,8 +10,10 @@
             <h3 class=" text-center display-4">Sensor</h3>
             <form action="">
                 <label class="form-label" for="serialNo" class="fs-5 py-2">Serial Number:</label>
-                <input type="text" name="serialNo" id="serialNo" class="form-control" value="{{sensor?.serialNo}}"
-                    readonly>
+                <input *ngIf="action == 'update'" type="text" name="serialNo" id="serialNo" class="form-control"
+                    value="{{sensor?.serialNo}}" readonly [formControl]="serialNo">
+                <input *ngIf="action == 'insert'" type="text" name="serialNo" id="serialNo" class="form-control"
+                    value="{{sensor?.serialNo}}" [formControl]="serialNo">
                 <br>
                 <label class="form-label" for="model" class="fs-5 py-2">Model:</label>
                 <input type="text" name="model" id="model" class="form-control" [formControl]="model"
@@ -21,8 +23,10 @@
                 <textarea class="form-control" id="description" [formControl]="description"
                     rows="3">{{sensor?.description}}</textarea>
                 <br>
-                <button type='button' class="btn my-3 w-100 fs-4 fw-bold btn-primary"
+                <button *ngIf="action == 'update'" type='button' class="btn my-3 w-100 fs-4 fw-bold btn-primary"
                     (click)="updateSensor()">Update</button>
+                <button *ngIf="action == 'create'" type='button' class="btn my-3 w-100 fs-4 fw-bold btn-primary"
+                    (click)="insertSensor()">Create</button>
             </form>
         </div>
     </div>

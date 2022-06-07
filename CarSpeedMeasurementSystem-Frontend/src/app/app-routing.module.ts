@@ -12,9 +12,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'panel', component: PanelComponent },
   { path: 'sensors', component: SensorsComponent },
-  { path: 'sensor/:serial_no', component: SensorComponent },
+  { path: 'sensor/:action/:serial_no', component: SensorComponent },
+  { path: 'sensor/:action', component: SensorComponent },
   { path: 'users', component: UsersComponent },
-  { path: 'users/:admin_id', component: UserComponent },
+  { path: 'user/:action/:admin_id', component: UserComponent },
+  { path: 'user/:action', component: UserComponent }
 ];
 
 @NgModule({
