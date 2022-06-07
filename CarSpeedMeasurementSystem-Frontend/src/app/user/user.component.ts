@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../models/User';
 import { UsersService } from '../users.service';
 declare var $: any;
@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
 
   action = '';
 
-  constructor(private usersService: UsersService, private route: ActivatedRoute) { }
+  constructor(private usersService: UsersService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.action = String(this.route.snapshot.paramMap.get('action'));
@@ -42,19 +42,16 @@ export class UserComponent implements OnInit {
     this.user!.fullName = this.fullName.value;
     this.user!.email = this.email.value;
     this.usersService.updateUser(this.user).subscribe(res => {
-      this.getUser(this.user?.adminId);
       this.toggleToast();
     });
   }
 
   insertUser() {
     const newUser: User = new User();
-    newUser!.username = this.fullName.value;
+    newUser!.username = this.username.value;
     newUser!.fullName = this.fullName.value;
     newUser!.email = this.email.value;
     this.usersService.insertUser(newUser).subscribe(res => {
-      // this.getUser(newUser.adminId);
-      console.log(res);
       this.toggleToast();
     });
   }
@@ -63,6 +60,7 @@ export class UserComponent implements OnInit {
     $('.toast').toggleClass('show');
     setTimeout(() => {
       $('.toast').toggleClass('show');
+      this.router.navigate(['/users']);
     }, 2500);
   }
 

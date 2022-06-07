@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Sensor } from '../models/Sensor';
 import { SensorsService } from '../sensors.service';
 declare var $: any;
@@ -20,7 +20,7 @@ export class SensorComponent implements OnInit {
 
   action = '';
 
-  constructor(private sensorService: SensorsService, private route: ActivatedRoute) { }
+  constructor(private sensorService: SensorsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.action = String(this.route.snapshot.paramMap.get('action'));
@@ -42,7 +42,6 @@ export class SensorComponent implements OnInit {
     this.sensor!.model = this.model.value;
     this.sensor!.description = this.description.value;
     this.sensorService.updateSensor(this.sensor).subscribe(res => {
-      this.getSensor(Number(this.sensor?.serialNo));
       this.toggleToast();
     });
   }
@@ -54,7 +53,6 @@ export class SensorComponent implements OnInit {
     newSensor!.description = this.description.value;
     console.log(newSensor);
     this.sensorService.insertSensor(newSensor).subscribe(res => {
-      this.getSensor(Number(newSensor.serialNo));
       this.toggleToast();
     });
   }
@@ -63,6 +61,7 @@ export class SensorComponent implements OnInit {
     $('.toast').toggleClass('show');
     setTimeout(() => {
       $('.toast').toggleClass('show');
+      this.router.navigate(['/sensors']);
     }, 2500);
   }
 
