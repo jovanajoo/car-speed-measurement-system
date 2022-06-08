@@ -27,7 +27,7 @@ namespace DataLayer
                     SensorReading r = new SensorReading();
                     r.timestemp = sqlDataReader.GetDateTime(0);
                     r.measuredSpeed = sqlDataReader.GetDecimal(1);
-                    r.speeding = sqlDataReader.GetDecimal(2);
+                    r.speeding = sqlDataReader.GetBoolean(2);
                     r.sensorSerialNumber = sqlDataReader.GetInt32(3);
                     r.idSensorLocation = sqlDataReader.GetInt32(4);
                     listOfSensorReadings.Add(r);

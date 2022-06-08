@@ -11,6 +11,7 @@ import { UsersComponent } from './users/users.component';
 import { UserComponent } from './user/user.component';
 import { SensorComponent } from './sensor/sensor.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SensorReadingComponent } from './sensor-reading/sensor-reading.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SensorsComponent,
     UsersComponent,
     UserComponent,
-    SensorComponent
+    SensorComponent,
+    SensorReadingComponent
   ],
   imports: [
     BrowserModule,

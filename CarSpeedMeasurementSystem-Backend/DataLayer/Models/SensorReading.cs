@@ -10,7 +10,7 @@ namespace DataLayer.Models
     {
         public DateTime timestemp { get; set; }
         public decimal measuredSpeed { get; set; }
-        public decimal speeding { get; set; }
+        public bool speeding { get; set; }
         public int sensorSerialNumber { get; set; }
         public int idSensorLocation { get; set; }
     }

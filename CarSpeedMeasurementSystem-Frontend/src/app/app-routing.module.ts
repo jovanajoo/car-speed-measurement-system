@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { PanelComponent } from './panel/panel.component';
+import { SensorReadingComponent } from './sensor-reading/sensor-reading.component';
 import { SensorComponent } from './sensor/sensor.component';
 import { SensorsComponent } from './sensors/sensors.component';
 import { UserComponent } from './user/user.component';
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'sensor/:action', component: SensorComponent },
   { path: 'users', component: UsersComponent },
   { path: 'user/:action/:admin_id', component: UserComponent },
-  { path: 'user/:action', component: UserComponent }
+  { path: 'user/:action', component: UserComponent },
+  { path: 'sensorreadings', component: SensorReadingComponent}
+
 ];
 
 @NgModule({

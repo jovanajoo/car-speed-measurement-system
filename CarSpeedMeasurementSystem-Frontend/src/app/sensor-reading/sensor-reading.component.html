@@ -1,0 +1,43 @@
+<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 100px; top: 0; right: 0;">
+    <div class="container d-flex align-items-center mt-3 flex-column">
+        <div class="container d-flex justify-content-between py-3">
+            <div>
+                <h1>Sensor Readings</h1>
+            </div>
+            <div>
+                <button class="btn btn-secondary mx-2" routerLink="/panel"><i class="bi bi-grid-1x2-fill"></i> Back to
+                    panel</button>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Measured Speed</th>
+                    <th>Spedding</th>
+                    <th>Sensor Serial Number</th>
+                    <th>Sensor Location</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let s of sensorReadings">
+                <tr>
+                    <td>{{ this.datePipe.transform(s.timestemp, 'dd-MM-yyyy HH:mm:ss') }}</td>
+                    <td>{{ s.measuredSpeed }}</td>
+                    <td>{{ s.speeding }}</td>
+                    <td>{{ s.sensorSerialNumber }}</td>
+                    <td>{{ s.idSensorLocation }}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="toast">
+        <div class="toast-header">
+            <strong class="mr-auto">Success</strong>
+        </div>
+        <div class="toast-body">
+            Sensor successfully updated!
+        </div>
+    </div>
+</div>
