@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Sensor } from '../models/Sensor';
 import { SensorsService } from '../sensors.service';
@@ -14,9 +14,9 @@ export class SensorComponent implements OnInit {
 
   sensor?: Sensor;
 
-  serialNo = new FormControl('');
-  model = new FormControl('');
-  description = new FormControl('');
+  serialNo = new UntypedFormControl('');
+  model = new UntypedFormControl('');
+  description = new UntypedFormControl('');
 
   action = '';
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../models/User';
 import { UsersService } from '../users.service';
@@ -14,9 +14,9 @@ export class UserComponent implements OnInit {
 
   user?: User;
 
-  username = new FormControl('');
-  fullName = new FormControl('');
-  email = new FormControl('');
+  username = new UntypedFormControl('');
+  fullName = new UntypedFormControl('');
+  email = new UntypedFormControl('');
 
   action = '';
 

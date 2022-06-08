@@ -11,6 +11,10 @@ import { UsersComponent } from './users/users.component';
 import { UserComponent } from './user/user.component';
 import { SensorComponent } from './sensor/sensor.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SensorLocationsComponent } from './sensor-locations/sensor-locations.component';
+import { SensorLocationComponent } from './sensor-location/sensor-location.component';
+import { MapsComponent } from './maps/maps.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -20,13 +24,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     SensorsComponent,
     UsersComponent,
     UserComponent,
-    SensorComponent
+    SensorComponent,
+    SensorLocationsComponent,
+    SensorLocationComponent,
+    MapsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
