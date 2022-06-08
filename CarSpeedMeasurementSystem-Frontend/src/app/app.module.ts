@@ -15,6 +15,7 @@ import { SensorLocationsComponent } from './sensor-locations/sensor-locations.co
 import { SensorLocationComponent } from './sensor-location/sensor-location.component';
 import { MapsComponent } from './maps/maps.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { SensorReadingComponent } from './sensor-reading/sensor-reading.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     SensorComponent,
     SensorLocationsComponent,
     SensorLocationComponent,
-    MapsComponent
+    MapsComponent,
+    SensorReadingComponent
   ],
   imports: [
     BrowserModule,

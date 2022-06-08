@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { PanelComponent } from './panel/panel.component';
 import { SensorLocationComponent } from './sensor-location/sensor-location.component';
 import { SensorLocationsComponent } from './sensor-locations/sensor-locations.component';
+import { SensorReadingComponent } from './sensor-reading/sensor-reading.component';
 import { SensorComponent } from './sensor/sensor.component';
 import { SensorsComponent } from './sensors/sensors.component';
 import { UserComponent } from './user/user.component';
@@ -21,7 +22,9 @@ const routes: Routes = [
   { path: 'user/:action', component: UserComponent },
   { path: 'sensorLocations', component: SensorLocationsComponent },
   { path: 'sensorLocation/:action', component: SensorLocationComponent },
-  { path: 'sensorLocation/:action/:entryNo', component: SensorLocationComponent }
+  { path: 'sensorLocation/:action/:entryNo', component: SensorLocationComponent },
+  { path: 'sensorReadings', component: SensorReadingComponent }
+
 ];
 
 @NgModule({
