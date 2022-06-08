@@ -19,8 +19,13 @@ namespace BusinessLayer
         }
         public List<SensorLocation> GetAllSensorLocations()
         {
-            List<SensorLocation> authors = this.sensorLocationRepository.GetAllSensorLocations();
-            return (authors.Count > 0) ? authors : null;
+            List<SensorLocation> sensors = this.sensorLocationRepository.GetAllSensorLocations();
+            return (sensors.Count > 0) ? sensors : null;
+        }
+        public List<SensorLocation> GetAllActiveSensorLocations()
+        {
+            List<SensorLocation> sensors = this.sensorLocationRepository.GetAllSensorLocations().Where(sl => sl.active).ToList();
+            return (sensors.Count > 0) ? sensors : null;
         }
         public bool InsertSensorLocation(SensorLocation l)
         {
@@ -33,6 +38,17 @@ namespace BusinessLayer
         public bool DeleteSensorLocation(int id)
         {
             return (this.sensorLocationRepository.DeleteSensorLocation(id) > 0);
+        }
+
+        public bool SetInactiveSensorLocation(SensorLocation l)
+        {
+            l.active = false;
+            return (this.sensorLocationRepository.UpdateSensorLocation(l) > 0);
+        }
+
+        public SensorLocation GetSensorLocation(int entryNo)
+        {
+            return this.sensorLocationRepository.GetAllSensorLocations().FirstOrDefault(sl => sl.entryNo == entryNo);
         }
     }
 }

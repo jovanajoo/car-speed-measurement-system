@@ -24,6 +24,18 @@ namespace WEB_API.Controllers
             return this.sensorLocationBusiness.GetAllSensorLocations();
         }
 
+        [HttpGet("Get/{entryNo}")]
+        public SensorLocation GetSensorLocation(int entryNo)
+        {
+            return this.sensorLocationBusiness.GetSensorLocation(entryNo);
+        }
+
+        [HttpGet("GetActive")]
+        public List<SensorLocation> GetAllActiveSensorLocations()
+        {
+            return this.sensorLocationBusiness.GetAllActiveSensorLocations();
+        }
+
         [HttpPost("Insert")]
         public bool InsertSensorLocation([FromBody] SensorLocation l)
         {

@@ -10,6 +10,9 @@ namespace BusinessLayer.Interfaces
     public interface ISensorLocationBusiness
     {
         List<SensorLocation> GetAllSensorLocations();
+        SensorLocation GetSensorLocation(int entryNo);
+        List<SensorLocation> GetAllActiveSensorLocations();
+        bool SetInactiveSensorLocation(SensorLocation l);
         bool InsertSensorLocation(SensorLocation l);
         bool UpdateSensorLocation(SensorLocation l);
         bool DeleteSensorLocation(int id);
