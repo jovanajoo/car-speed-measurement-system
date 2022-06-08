@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="container py-4 d-flex justify-content-between">
+        <h1>Sensors Locations</h1>
+        <div>
+            <button class="btn btn-success px-4 mx-2" routerLink="/sensorLocation/insert"><i class="bi bi-plus-circle"
+                    height="20px" width="20px"></i>
+                Insert</button>
+            <button class="btn btn-secondary mx-2" routerLink="/panel"><i class="bi bi-grid-1x2-fill"></i> Back to
+                panel</button>
+        </div>
+    </div>
+    <div class="container py-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Start Date</th>
+                    <th>Active</th>
+                    <th>Max Speed</th>
+                    <th>End Date</th>
+                    <th>Description</th>
+                    <th class="text-center">Remove from location</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let sl of sensorLocations">
+                <tr>
+                    <td>{{this.pipe.transform(sl.startDate, "dd.MM.yyyy")}}</td>
+                    <td>{{sl.active}}</td>
+                    <td>{{sl.maxSpeed}} km/h</td>
+                    <td><span *ngIf="!sl.active">{{this.pipe.transform(sl.endDate, "dd.MM.yyyy")}}</span></td>
+                    <td>{{sl.description}}</td>
+                    <td class="text-center" (click)="setSensorLocationInactive(sl.entryNo!)">
+                        <button class="btn btn-danger ">
+                            <i class="bi bi-camera-video-off-fill"></i>
+                        </button>
+                    </td>
+                    <!-- <td routerLink="/sensor/update/{{s.serialNo}}" class="text-center">
+                        <button class="btn btn-primary">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                    </td> -->
+                    <!-- <td class="text-center" (click)="deleteSensor(s.serialNo)">
+                        <button class="btn btn-danger ">
+                            <i class="bi bi-trash-fill icon icon-delete"></i>
+                        </button>
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
