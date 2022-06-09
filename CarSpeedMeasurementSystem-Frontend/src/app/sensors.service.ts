@@ -36,4 +36,8 @@ export class SensorsService {
     return this.http.post<Sensor>('http://localhost:5000/api/sensors/insert', JSON.stringify(sensor), this.httpOptions);
   }
 
+  getInactiveSensors(): Observable<Sensor[]> {
+    return this.http.get<Sensor[]>('http://localhost:5000/api/sensors/getinactive');
+  }
+
 }

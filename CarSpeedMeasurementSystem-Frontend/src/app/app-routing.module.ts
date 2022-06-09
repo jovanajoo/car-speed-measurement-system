@@ -24,7 +24,6 @@ const routes: Routes = [
   { path: 'sensorLocation/:action', component: SensorLocationComponent },
   { path: 'sensorLocation/:action/:entryNo', component: SensorLocationComponent },
   { path: 'sensorReadings', component: SensorReadingComponent }
-
 ];
 
 @NgModule({

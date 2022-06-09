@@ -30,6 +30,12 @@ namespace WEB_API.Controllers
             return this.sensorBusiness.GetSensorBySerialNumber(serial_no);
         }
 
+        [HttpGet("GetInactive")]
+        public List<Sensor> GetSensorsInactive()
+        {
+            return this.sensorBusiness.GetSensorsInactive();
+        }
+
         [HttpPost("Insert")]
         public bool InsertSensor([FromBody] Sensor sernsor)
         {

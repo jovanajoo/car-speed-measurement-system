@@ -50,5 +50,15 @@ namespace BusinessLayer
         {
             return this.sensorLocationRepository.GetAllSensorLocations().FirstOrDefault(sl => sl.entryNo == entryNo);
         }
+
+        public List<SensorLocation> GetSensorLocationBySerialNo(int serialNo)
+        {
+            return this.sensorLocationRepository.GetAllSensorLocations().Where(sl => sl.sensorSerialNumber == serialNo).ToList();
+        }
+
+        public SensorLocation GetActiveSensorLocationBySerialNo(int serialNo)
+        {
+            return this.sensorLocationRepository.GetAllSensorLocations().FirstOrDefault(sl => sl.sensorSerialNumber == serialNo && sl.active);
+        }
     }
 }

@@ -30,6 +30,18 @@ namespace WEB_API.Controllers
             return this.sensorLocationBusiness.GetSensorLocation(entryNo);
         }
 
+        [HttpGet("GetActive/{serialNo}")]
+        public SensorLocation GetActiveSensorLocationBySerialNo(int serialNo)
+        {
+            return this.sensorLocationBusiness.GetActiveSensorLocationBySerialNo(serialNo);
+        }
+
+        [HttpGet("GetBySerialNo/{serialNo}")]
+        public List<SensorLocation> GetSensorLocationBySerialNo(int serialNo)
+        {
+            return this.sensorLocationBusiness.GetSensorLocationBySerialNo(serialNo);
+        }
+
         [HttpGet("GetActive")]
         public List<SensorLocation> GetAllActiveSensorLocations()
         {

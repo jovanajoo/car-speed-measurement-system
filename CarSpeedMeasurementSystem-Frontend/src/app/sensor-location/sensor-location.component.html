@@ -12,53 +12,104 @@
                     <h3 class=" text-center display-4 py-2">Sensor Location </h3>
                 </div>
                 <div class="col-lg-6">
-                    <form action="">
+                    <form action="" *ngIf="action == 'view'">
                         <label class="form-label" for="sensorSerialNo" class="fs-5 py-2">Sensor Serial Number:</label>
-                        <input *ngIf="action == 'view'" type="text" name="sensorSerialNo" id="sensorSerialNo"
-                            class="form-control" value="{{sensorLocation?.sensorSerialNumber}}" readonly
-                            [formControl]="sensorSerialNo">
-                        <input *ngIf="action == 'insert'" type="text" name="sensorSerialNo" id="sensorSerialNo"
-                            class="form-control" value="{{sensorLocation?.sensorSerialNumber}}"
-                            [formControl]="sensorSerialNo">
+                        <input type="text" name="sensorSerialNo" id="sensorSerialNo" class="form-control"
+                            value="{{sensorLocation?.sensorSerialNumber}} {{currentSensor?.model}}" readonly>
                         <br>
                         <label class="form-label" for="start_date" class="fs-5 py-2">Start Date:</label>
-                        <input type="date" name="start_date" id="start_date" class="form-control"
-                            [formControl]="startDate" value="{{sensorLocation?.startDate}}">
+                        <input type="date" name="start_date" id="start_date" class="form-control" readonly
+                            value="{{sensorLocation?.startDate | date:'yyyy-MM-dd'}}">
                         <br>
                         <label class="form-label" for="latitude" class="fs-5 py-2">Latitude:</label>
-                        <input type="number" name="latitude" id="latitude" class="form-control" [formControl]="latitude"
-                            value="{{sensorLocation?.latitude}}">
+                        <input type="number" name="latitude" id="latitude" class="form-control"
+                            value="{{sensorLocation?.latitude}}" readonly>
                         <br>
                         <label class="form-label" for="longitude" class="fs-5 py-2">Longitude:</label>
                         <input type="number" name="longitude" id="longitude" class="form-control"
-                            [formControl]="longitude" value="{{sensorLocation?.longitude}}">
+                            value="{{sensorLocation?.longitude}}" readonly>
                         <br>
                         <label class="form-label" for="max_speed" class="fs-5 py-2">Max Speed:</label>
                         <input type="number" name="max_speed" id="max_speed" class="form-control"
-                            [formControl]="maxSpeed" value="{{sensorLocation?.maxSpeed}}">
+                            value="{{sensorLocation?.maxSpeed}}" readonly>
                         <br>
+                        <textarea class="form-control" id="description" readonly
+                            rows="3">{{sensorLocation?.description}} </textarea>
+                        <br>
+                    </form>
+
+
+
+                    <form action="" *ngIf="action == 'insert'">
+                        <label class="form-label" for="sensorSerialNo" class="fs-5 py-2">Sensor Serial
+                            Number:</label>
+                        <div class="input-group mb-3">
+                            <select class="form-select" id="inputGroupSelect01" [formControl]="selectedSensorNo">
+                                <option [value]=""></option>
+                                <option *ngFor="let s of sensors" [value]="s?.serialNo">{{s?.serialNo}} {{s?.model}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="form-label" for="start_date" class="fs-5 py-2">Start Date:</label>
+                                    <input type="date" name="start_date" id="start_date" class="form-control"
+                                        onkeydown="return false" [formControl]="startDate">
+                                    <br>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="form-label" for="max_speed" class="fs-5 py-2">Max Speed:</label>
+                                    <input type="number" name="max_speed" id="max_speed" class="form-control"
+                                        [formControl]="maxSpeed" value="{{sensorLocation?.maxSpeed}}">
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <label class="form-label" for="latitude" class="fs-5 py-2">Latitude:</label>
+                        <input type="number" name="latitude" id="latitude" class="form-control" [formControl]="latitude"
+                            value="{{sensorLocation?.latitude}}" readonly>
+                        <br>
+                        <label class="form-label" for="longitude" class="fs-5 py-2">Longitude:</label>
+                        <input type="number" name="longitude" id="longitude" class="form-control"
+                            [formControl]="longitude" value="{{sensorLocation?.longitude}}" readonly>
+                        <br>
+
+                        <label class="form-label" for="description" class="fs-5 py-2">Description:</label>
                         <textarea class="form-control" id="description" [formControl]="description"
                             rows="3">{{sensorLocation?.description}}</textarea>
                         <br>
-                        <button *ngIf="action == 'insert'" type='button' class="btn my-3 w-100 fs-4 fw-bold btn-primary"
+                        <button type='button' class="btn my-3 w-100 fs-4 fw-bold btn-primary"
                             (click)="insertSensorLocation()">Set Sensor at Location</button>
                     </form>
                 </div>
-                <div class="col-lg-6">
-                    <google-map height="500px" width="100%" [zoom]="17" [center]="center!">
-                        <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
-                            [title]="marker.title" [options]="marker.options"></map-marker>
-                    </google-map>
+                <div class="col-lg-6 py-5">
+                    <div *ngIf="action == 'view'">
+                        <google-map height="500px" width="100%" [center]="center!" [options]="options">
+                            <map-marker [position]="marker.position" [label]="marker.label" [title]="marker.title"
+                                [options]="marker.options"></map-marker>
+                        </google-map>
+                    </div>
+                    <div *ngIf="action == 'insert'">
+                        <google-map height="500px" width="100%" [center]="center!" [options]="options"
+                            (mapDblclick)="doubleClickMap($event)">
+                            <map-marker #markerElem [position]="marker.position" [label]="marker.label"
+                                [title]="marker.title" [options]="marker.options">
+                            </map-marker>
+                        </google-map>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="toast">
+    <div class=" toast">
         <div class="toast-header">
             <strong class="mr-auto">Success</strong>
         </div>
         <div class="toast-body">
-            Sensor successfully updated!
+            Sensor Location successfully set!
         </div>
     </div>
 </div>

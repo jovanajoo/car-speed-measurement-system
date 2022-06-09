@@ -14,5 +14,6 @@ namespace BusinessLayer.Interfaces
         bool UpdateSensor(Sensor s);
         bool DeleteSensor(int serial_no);
         Sensor GetSensorBySerialNumber(int serialNo);
+        List<Sensor> GetSensorsInactive();
     }
 }

@@ -13,9 +13,11 @@ namespace BusinessLayer
     public class SensorBusiness:ISensorBusiness
     {
         private readonly ISensorRepository sensorRepository;
-        public SensorBusiness(ISensorRepository sensorRepository)
+        private readonly ISensorLocationRepository sensorLocationRepository;
+        public SensorBusiness(ISensorRepository sensorRepository, ISensorLocationRepository sensorLocationRepository)
         {
             this.sensorRepository = sensorRepository;
+            this.sensorLocationRepository = sensorLocationRepository;
         }
         public List<Sensor> GetAllSensors()
         {
@@ -37,6 +39,12 @@ namespace BusinessLayer
         public Sensor GetSensorBySerialNumber(int serialNo)
         {
             return this.sensorRepository.GetAllSensors().FirstOrDefault(s => s.serialNo == serialNo);
+        }
+
+        public List<Sensor> GetSensorsInactive()
+        {
+            return this.sensorRepository.GetAllSensors().Where(s => 
+            !this.sensorLocationRepository.GetAllSensorLocations().Exists( sl => sl.sensorSerialNumber == s.serialNo && sl.active)).ToList();
         }
     }
 }
