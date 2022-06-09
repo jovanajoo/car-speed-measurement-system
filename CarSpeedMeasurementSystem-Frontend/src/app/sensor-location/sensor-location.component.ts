@@ -3,6 +3,11 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SensorLocation } from '../models/SensorLocations';
 import { SensorLocationsService } from '../sensor-locations.service';
+import { DatePipe } from '@angular/common';
+import { Sensor } from '../models/Sensor';
+import { SensorsService } from '../sensors.service';
+import { MapMarker } from '@angular/google-maps';
+declare var $: any;
 
 @Component({
   selector: 'app-sensor-location',
@@ -11,20 +16,47 @@ import { SensorLocationsService } from '../sensor-locations.service';
 })
 export class SensorLocationComponent implements OnInit {
 
-  constructor(private sensorLocationService: SensorLocationsService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private sensorLocationService: SensorLocationsService, private sensorService: SensorsService, private route: ActivatedRoute, private router: Router) { }
 
   sensorLocation?: SensorLocation;
+  currentSensor?: Sensor;
 
-  sensorSerialNo = new FormControl('');
-  startDate = new FormControl('');
-  latitude = new FormControl('');
-  longitude = new FormControl('');
+  sensors?: Sensor[];
+
+  selectedSensorNo = new FormControl('');
+  startDate = new FormControl(new Date().toISOString().slice(0, 10));
+  latitude = new FormControl(0);
+  longitude = new FormControl(0);
   maxSpeed = new FormControl('');
   description = new FormControl('');
 
-  center?: google.maps.LatLngLiteral;
+  datePipe = new DatePipe('EN-us');
 
-  markers?: any[] = [];
+  center?: google.maps.LatLngLiteral = {
+    lat: 44.80525279492607,
+    lng: 20.470766186506555
+  };
+
+  options: google.maps.MapOptions = {
+    disableDoubleClickZoom: true,
+    maxZoom: 18,
+    minZoom: 12,
+    fullscreenControl: false,
+    streetViewControl: false
+  }
+
+  marker = {
+    position: {
+      lat: 0,
+      lng: 0,
+    },
+    label: {
+      color: 'red',
+      text: 'Sensor: ',
+    },
+    title: 'Sensor: ',
+    options: { animation: google.maps.Animation.BOUNCE },
+  };
 
   action = '';
 
@@ -34,39 +66,88 @@ export class SensorLocationComponent implements OnInit {
       const entryNo = Number(this.route.snapshot.paramMap.get('entryNo'));
       this.getSensorLocation(entryNo);
     }
-
+    else {
+      this.getSensors();
+      this.options.minZoom = 6;
+      // $('#start_date').
+    }
   }
 
   getSensorLocation(entryNo?: number): void {
-    console.log(entryNo);
     this.sensorLocationService.getSensorLocation(entryNo).subscribe(data => {
       this.sensorLocation = data;
-      console.log(this.sensorLocation);
-      this.addMarker(this.sensorLocation.latitude!, this.sensorLocation.longitude!);
+      this.setMarker(this.sensorLocation.latitude!, this.sensorLocation.longitude!);
       this.center = {
         lat: this.sensorLocation.latitude!,
         lng: this.sensorLocation.longitude!,
       }
+      this.sensorService.getSensorBySerialNo(this.sensorLocation.sensorSerialNumber).subscribe(res => {
+        this.currentSensor = res;
+      })
     });
   }
 
-  addMarker(lat: number, lon: number) {
-    this.markers?.push({
+  setMarker(lat: number, lon: number) {
+    this.marker = {
       position: {
         lat: lat,
         lng: lon,
       },
       label: {
         color: 'red',
-        text: 'Marker label ' + (this.markers.length + 1),
+        text: 'Sensor: ' + this.sensorLocation?.sensorSerialNumber,
       },
-      title: 'Marker title ' + (this.markers.length + 1),
-      options: { animation: google.maps.Animation.BOUNCE },
-    })
+      title: 'Sensor: ' + this.sensorLocation?.sensorSerialNumber,
+      options: {
+        animation: google.maps.Animation.BOUNCE,
+      },
+    };
   }
+
+  openInfo(marker: MapMarker) {
+    console.log(marker);
+  }
+
+  doubleClickMap(event: google.maps.MapMouseEvent) {
+    console.log(event);
+    this.latitude.setValue(event.latLng!.lat());
+    this.longitude.setValue(event.latLng!.lng());
+  }
+
+  getSensors(): void {
+    this.sensorService.getInactiveSensors().subscribe(res => {
+      this.sensors = res;
+    });
+  }
+
 
   insertSensorLocation(): void {
 
+    if (Number(this.selectedSensorNo.value) == 0 ||
+      Number(this.latitude.value) == 0 ||
+      Number(this.longitude.value) == 0 ||
+      Number(this.maxSpeed.value) == 0) {
+      return;
+    }
+    let newSensorLocation: SensorLocation = new SensorLocation();
+    newSensorLocation.sensorSerialNumber = Number(this.selectedSensorNo.value);
+    newSensorLocation.startDate = new Date(this.startDate.value!);
+    newSensorLocation.latitude = Number(this.latitude.value);
+    newSensorLocation.longitude = Number(this.longitude.value);
+    newSensorLocation.maxSpeed = Number(this.maxSpeed.value);
+    newSensorLocation.description = this.description.value!;
+    newSensorLocation.active = true;
+    this.sensorLocationService.insertSensorLocation(newSensorLocation).subscribe(res => {
+      this.toggleToast();
+    });
+  }
+
+  toggleToast() {
+    $('.toast').toggleClass('show');
+    setTimeout(() => {
+      $('.toast').toggleClass('show');
+      this.router.navigate(['/sensorLocations']);
+    }, 2500);
   }
 
 }

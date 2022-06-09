@@ -16,5 +16,7 @@ namespace BusinessLayer.Interfaces
         bool InsertSensorLocation(SensorLocation l);
         bool UpdateSensorLocation(SensorLocation l);
         bool DeleteSensorLocation(int id);
+        List<SensorLocation> GetSensorLocationBySerialNo(int serialNo);
+        SensorLocation GetActiveSensorLocationBySerialNo(int serialNo);
     }
 }

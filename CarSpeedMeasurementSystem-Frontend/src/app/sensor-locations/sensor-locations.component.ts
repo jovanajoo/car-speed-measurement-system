@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SensorLocation } from '../models/SensorLocations';
 import { SensorLocationsService } from '../sensor-locations.service';
 import { DatePipe, formatDate } from '@angular/common';
+import { SensorsService } from '../sensors.service';
+import { Sensor } from '../models/Sensor';
 
 @Component({
   selector: 'app-sensor-locations',
@@ -15,7 +17,7 @@ export class SensorLocationsComponent implements OnInit {
   pipe = new DatePipe('en-US');;
   emptyDate = new Date('0001-01-01T00:00:00');
 
-  constructor(private sensorLocationService: SensorLocationsService) { }
+  constructor(private sensorLocationService: SensorLocationsService, private sensorService: SensorsService) { }
 
   ngOnInit(): void {
     this.getActiveSensorsLocations();
@@ -36,7 +38,6 @@ export class SensorLocationsComponent implements OnInit {
         this.getActiveSensorsLocations();
       });
     });
-
   }
 
 }

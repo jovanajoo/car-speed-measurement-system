@@ -21,3 +21,7 @@
     background-color: var(--green-dark);
     color: black;
 }
+
+a {
+    text-decoration: none !important;
+}

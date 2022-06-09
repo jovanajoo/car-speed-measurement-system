@@ -13,21 +13,22 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Sensor</th>
                     <th>Start Date</th>
                     <th>Active</th>
                     <th>Max Speed</th>
                     <th>End Date</th>
-                    <th>Description</th>
                     <th class="text-center">Remove from location</th>
+                    <th class="text-center">Information</th>
                 </tr>
             </thead>
             <tbody *ngFor="let sl of sensorLocations">
                 <tr>
+                    <td><a routerLink="/sensor/update/{{sl.sensorSerialNumber}}">{{sl.sensorSerialNumber}}</a></td>
                     <td>{{this.pipe.transform(sl.startDate, "dd.MM.yyyy")}}</td>
                     <td>{{sl.active}}</td>
                     <td>{{sl.maxSpeed}} km/h</td>
                     <td><span *ngIf="!sl.active">{{this.pipe.transform(sl.endDate, "dd.MM.yyyy")}}</span></td>
-                    <td>{{sl.description}}</td>
                     <td class="text-center" (click)="setSensorLocationInactive(sl.entryNo!)">
                         <button class="btn btn-danger ">
                             <i class="bi bi-camera-video-off-fill"></i>
@@ -35,7 +36,7 @@
                     </td>
                     <td routerLink="/sensorLocation/view/{{sl.entryNo}}" class="text-center">
                         <button class="btn btn-primary">
-                            <i class="bi bi-pencil-fill"></i>
+                            <i class="bi bi-info-square-fill"></i>
                         </button>
                     </td>
                     <!-- <td class="text-center" (click)="deleteSensor(s.serialNo)">
