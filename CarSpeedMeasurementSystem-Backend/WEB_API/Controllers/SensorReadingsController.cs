@@ -23,6 +23,18 @@ namespace WEB_API.Controllers
         {
             return this.sensorReadingBusiness.GetAllSensorReadings();
         }
+        [HttpGet("GetCurrentMonthReadings")]
+        public List<SensorReading> GetCurrentMonthReadings()
+        {
+            return this.sensorReadingBusiness.GetCurrentMonthReadings();
+        }
+
+        [HttpGet("GetSixHourReadings")]
+        public List<List<SensorReading>> GetSixHourReadings()
+        {
+            return this.sensorReadingBusiness.GetSixHourReadings();
+        }
+
 
         [HttpGet("GetBySensor/{serial_no}")]
         public List<SensorReading> GetSensorReadingBySensor(int serial_no)

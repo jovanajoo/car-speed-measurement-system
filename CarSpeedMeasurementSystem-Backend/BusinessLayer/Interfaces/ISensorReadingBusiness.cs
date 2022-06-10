@@ -13,5 +13,7 @@ namespace BusinessLayer.Interfaces
         bool InsertSensorReading(SensorReading r);
         List<SensorReading> GetSensorReadingsBySensor(int serial_no);
         List<SensorReading> GetSensorReadingsByLocation(int id);
+        List<SensorReading> GetCurrentMonthReadings();
+        List<List<SensorReading>> GetSixHourReadings();
     }
 }
