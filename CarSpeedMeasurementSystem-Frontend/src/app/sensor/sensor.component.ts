@@ -18,6 +18,9 @@ export class SensorComponent implements OnInit {
   model = new UntypedFormControl('');
   description = new UntypedFormControl('');
 
+  serialNoErr?: boolean;
+  modelErr?: boolean;
+
   action = '';
 
   constructor(private sensorService: SensorsService, private route: ActivatedRoute, private router: Router) { }
@@ -39,6 +42,10 @@ export class SensorComponent implements OnInit {
   }
 
   updateSensor() {
+    this.modelErr = String(this.model.value).trim().length == 0;
+    if (this.modelErr) {
+      return;
+    }
     this.sensor!.model = this.model.value;
     this.sensor!.description = this.description.value;
     this.sensorService.updateSensor(this.sensor).subscribe(res => {
@@ -47,6 +54,12 @@ export class SensorComponent implements OnInit {
   }
 
   insertSensor() {
+
+    this.serialNoErr = Number(this.serialNo.value) == 0;
+    this.modelErr = String(this.model.value).trim().length == 0;
+    if (this.serialNoErr || this.modelErr) {
+      return;
+    }
     const newSensor: Sensor = new Sensor();
     newSensor!.serialNo = this.serialNo.value;
     newSensor!.model = this.model.value;

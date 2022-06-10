@@ -14,5 +14,7 @@ namespace BusinessLayer.Interfaces
         bool UpdateAdministrator(Administrator a);
         bool DeleteAdministrator(int id);
         Administrator GetAdministratorById(int id);
+        Administrator GetAdministratorByUsername(string username);
+        bool UsernameExists(string username);
     }
 }

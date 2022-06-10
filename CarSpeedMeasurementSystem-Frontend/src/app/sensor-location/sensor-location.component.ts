@@ -6,7 +6,7 @@ import { SensorLocationsService } from '../sensor-locations.service';
 import { DatePipe } from '@angular/common';
 import { Sensor } from '../models/Sensor';
 import { SensorsService } from '../sensors.service';
-import { MapMarker } from '@angular/google-maps';
+import { GoogleMap, MapMarker } from '@angular/google-maps';
 declare var $: any;
 
 @Component({
@@ -30,7 +30,10 @@ export class SensorLocationComponent implements OnInit {
   maxSpeed = new FormControl('');
   description = new FormControl('');
 
-  datePipe = new DatePipe('EN-us');
+
+  sensorSerialNoErr?: boolean;
+  maxSpeedErr?: boolean;
+  locationErr?: boolean;
 
   center?: google.maps.LatLngLiteral = {
     lat: 44.80525279492607,
@@ -51,10 +54,9 @@ export class SensorLocationComponent implements OnInit {
       lng: 0,
     },
     label: {
-      color: 'red',
-      text: 'Sensor: ',
+      color: '',
     },
-    title: 'Sensor: ',
+    title: '',
     options: { animation: google.maps.Animation.BOUNCE },
   };
 
@@ -69,7 +71,6 @@ export class SensorLocationComponent implements OnInit {
     else {
       this.getSensors();
       this.options.minZoom = 6;
-      // $('#start_date').
     }
   }
 
@@ -91,27 +92,35 @@ export class SensorLocationComponent implements OnInit {
     this.marker = {
       position: {
         lat: lat,
-        lng: lon,
+        lng: lon
       },
       label: {
         color: 'red',
-        text: 'Sensor: ' + this.sensorLocation?.sensorSerialNumber,
       },
       title: 'Sensor: ' + this.sensorLocation?.sensorSerialNumber,
       options: {
-        animation: google.maps.Animation.BOUNCE,
+        animation: google.maps.Animation.BOUNCE
       },
     };
-  }
-
-  openInfo(marker: MapMarker) {
-    console.log(marker);
   }
 
   doubleClickMap(event: google.maps.MapMouseEvent) {
     console.log(event);
     this.latitude.setValue(event.latLng!.lat());
     this.longitude.setValue(event.latLng!.lng());
+    this.marker = {
+      position: {
+        lat: Number(this.latitude.value),
+        lng: Number(this.longitude.value)
+      },
+      label: {
+        color: 'red',
+      },
+      title: 'Sensor: ' + this.sensorLocation?.sensorSerialNumber,
+      options: {
+        animation: google.maps.Animation.BOUNCE
+      },
+    };
   }
 
   getSensors(): void {
@@ -129,6 +138,14 @@ export class SensorLocationComponent implements OnInit {
       Number(this.maxSpeed.value) == 0) {
       return;
     }
+
+    this.sensorSerialNoErr = Number(this.selectedSensorNo.value) == 0;
+    this.locationErr = Number(this.latitude.value) == 0 || Number(this.longitude.value) == 0;
+    this.maxSpeedErr = Number(this.maxSpeed.value) == 0;
+    if (this.sensorSerialNoErr || this.locationErr || this.maxSpeedErr) {
+      return;
+    }
+
     let newSensorLocation: SensorLocation = new SensorLocation();
     newSensorLocation.sensorSerialNumber = Number(this.selectedSensorNo.value);
     newSensorLocation.startDate = new Date(this.startDate.value!);

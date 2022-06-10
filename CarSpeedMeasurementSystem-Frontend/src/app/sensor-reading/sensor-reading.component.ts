@@ -19,14 +19,14 @@ export class SensorReadingComponent implements OnInit {
   ngOnInit(): void {
     this.GetAllSensorReading();
   }
-  GetAllSensorReading(){
+  GetAllSensorReading() {
     this.sensorReadingService.getAllSensorReadings().subscribe(resp => {
       this.sensorReadings = resp;
       console.log(this.sensorReadings);
     })
   }
-  GetSensorReadingBySerialNo(serialNo?: number){
-    this.sensorReadingService.getSensorReadingBySerialNo(serialNo).subscribe(resp =>{
+  GetSensorReadingBySerialNo(serialNo?: number) {
+    this.sensorReadingService.getSensorReadingBySerialNo(serialNo).subscribe(resp => {
       this.sensorReadings = resp;
     })
   }

@@ -30,6 +30,7 @@ namespace DataLayer
                     a.email = sqlDataReader.GetString(2);
                     a.username = sqlDataReader.GetString(3);
                     a.password = sqlDataReader.GetString(4);
+                    a.admin = sqlDataReader.GetBoolean(5);
                     listOfAdministrators.Add(a);
                 }
             }
@@ -42,7 +43,7 @@ namespace DataLayer
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandText = string.Format("INSERT INTO Administrators VALUES('{0}', '{1}', '{2}', '{3}')", a.fullName, a.email, a.username, a.password);
+                sqlCommand.CommandText = string.Format("INSERT INTO Administrators VALUES('{0}', '{1}', '{2}', '{3}','{4}')", a.fullName, a.email, a.username, a.password,a.admin);
 
                 return sqlCommand.ExecuteNonQuery();
             }
@@ -54,7 +55,7 @@ namespace DataLayer
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandText = string.Format("UPDATE Administrators SET full_name = '{0}', email = '{1}', username = '{2}', password = '{3}' WHERE admin_id = {4}", a.fullName, a.email, a.username, a.password, a.adminId);
+                sqlCommand.CommandText = string.Format("UPDATE Administrators SET full_name = '{0}', email = '{1}', username = '{2}', password = '{3}', admin = '{4}' WHERE admin_id = {5}", a.fullName, a.email, a.username, a.password,a.admin, a.adminId);
 
                 return sqlCommand.ExecuteNonQuery();
             }

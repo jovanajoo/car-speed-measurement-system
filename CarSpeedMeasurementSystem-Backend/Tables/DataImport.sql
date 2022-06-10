@@ -1,7 +1,7 @@
 --Administrators
-INSERT INTO Administrators VALUES ('Milan Tepic','97-2018@gmail.com','tepke22','tepke22');
-INSERT INTO Administrators VALUES ('Bojan Simic','38-2018@gmail.com','bojansi','bojansi');
-INSERT INTO Administrators VALUES ('Jovana Bulatovic','197-2018@gmail.com','jovanajoo','jovanajoo');
+INSERT INTO Administrators VALUES ('Milan Tepic','97-2018@gmail.com','tepke22','tepke22','true');
+INSERT INTO Administrators VALUES ('Bojan Simic','38-2018@gmail.com','bojansi','bojansi','true');
+INSERT INTO Administrators VALUES ('Jovana Bulatovic','197-2018@gmail.com','jovanajoo','jovanajoo','true');
 
 --Sensors
 INSERT INTO Sensors VALUES (659855296,'HOLSTEIN 2VSS0076','');

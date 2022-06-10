@@ -30,6 +30,18 @@ namespace WEB_API.Controllers
             return this.administratorBusiness.GetAdministratorById(id);
         }
 
+        [HttpGet("GetByUsername/{username}")]
+        public Administrator GetAdministratorByUsername(string username)
+        {
+            return this.administratorBusiness.GetAdministratorByUsername(username);
+        }
+
+        [HttpGet("UsernameExists/{username}")]
+        public bool UsernameExists(string username)
+        {
+            return this.administratorBusiness.UsernameExists(username);
+        }
+
         [HttpPost("Insert")]
         public bool InsertAdministrator([FromBody] Administrator administrator)
         {

@@ -108,7 +108,7 @@
                             </div>
                         </div>
                         <!-- USERS -->
-                        <div class="accordion-item">
+                        <div class="accordion-item" *ngIf="loggedUser?.admin">
                             <h2 class="accordion-header" id="accordion-users-heading">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panel-users" aria-expanded="false" aria-controls="panel-users">
@@ -151,7 +151,7 @@
                 </div>
 
                 <div class="container py-2">
-                    <button routerLink="/login" class="btn w-100 fs-4 fw-bold logout-btn">Log Out</button>
+                    <button (click)="logout()" class="btn w-100 fs-4 fw-bold logout-btn" type="button">Log Out</button>
                 </div>
             </div>
         </div>

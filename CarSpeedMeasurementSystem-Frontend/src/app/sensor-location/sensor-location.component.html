@@ -49,6 +49,7 @@
                                 <option *ngFor="let s of sensors" [value]="s?.serialNo">{{s?.serialNo}} {{s?.model}}
                                 </option>
                             </select>
+                            <p *ngIf="sensorSerialNoErr" class="text-danger">Sensor must be selected!</p>
                         </div>
 
                         <div class="col-lg-12">
@@ -57,13 +58,12 @@
                                     <label class="form-label" for="start_date" class="fs-5 py-2">Start Date:</label>
                                     <input type="date" name="start_date" id="start_date" class="form-control"
                                         onkeydown="return false" [formControl]="startDate">
-                                    <br>
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="form-label" for="max_speed" class="fs-5 py-2">Max Speed:</label>
                                     <input type="number" name="max_speed" id="max_speed" class="form-control"
                                         [formControl]="maxSpeed" value="{{sensorLocation?.maxSpeed}}">
-                                    <br>
+                                    <p *ngIf="maxSpeedErr" class="text-danger">Max speed must be filled!</p>
                                 </div>
                             </div>
                         </div>
@@ -71,12 +71,10 @@
                         <label class="form-label" for="latitude" class="fs-5 py-2">Latitude:</label>
                         <input type="number" name="latitude" id="latitude" class="form-control" [formControl]="latitude"
                             value="{{sensorLocation?.latitude}}" readonly>
-                        <br>
                         <label class="form-label" for="longitude" class="fs-5 py-2">Longitude:</label>
                         <input type="number" name="longitude" id="longitude" class="form-control"
                             [formControl]="longitude" value="{{sensorLocation?.longitude}}" readonly>
-                        <br>
-
+                        <p *ngIf="locationErr" class="text-danger">Location must be selected on map bu double click!</p>
                         <label class="form-label" for="description" class="fs-5 py-2">Description:</label>
                         <textarea class="form-control" id="description" [formControl]="description"
                             rows="3">{{sensorLocation?.description}}</textarea>
@@ -88,15 +86,15 @@
                 <div class="col-lg-6 py-5">
                     <div *ngIf="action == 'view'">
                         <google-map height="500px" width="100%" [center]="center!" [options]="options">
-                            <map-marker [position]="marker.position" [label]="marker.label" [title]="marker.title"
-                                [options]="marker.options"></map-marker>
+                            <map-marker [position]="marker.position" [title]="marker.title" [options]="marker.options">
+                            </map-marker>
                         </google-map>
                     </div>
                     <div *ngIf="action == 'insert'">
                         <google-map height="500px" width="100%" [center]="center!" [options]="options"
                             (mapDblclick)="doubleClickMap($event)">
-                            <map-marker #markerElem [position]="marker.position" [label]="marker.label"
-                                [title]="marker.title" [options]="marker.options">
+                            <map-marker #markerElem [position]="marker.position" [title]="marker.title"
+                                [options]="marker.options">
                             </map-marker>
                         </google-map>
                     </div>

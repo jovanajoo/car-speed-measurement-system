@@ -39,5 +39,14 @@ namespace BusinessLayer
             return this.administratorRepository.GetAllAdministrators().FirstOrDefault(a => a.adminId == id);
         }
 
+        public Administrator GetAdministratorByUsername(string username)
+        {
+            return this.administratorRepository.GetAllAdministrators().FirstOrDefault(a => a.username == username);
+        }
+
+        public bool UsernameExists(string username)
+        {
+            return this.administratorRepository.GetAllAdministrators().Exists(a => a.username == username);
+        }
     }
 }

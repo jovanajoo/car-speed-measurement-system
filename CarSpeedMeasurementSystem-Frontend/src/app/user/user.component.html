@@ -7,38 +7,88 @@
         </div>
         <div class="card form w-50 py-3 px-5">
             <h3 class=" text-center display-4">User</h3>
-            <form action="">
-                <label *ngIf="action == 'update'" class="form-label" for="adminId" class="fs-5 py-2">Id:</label>
-                <input *ngIf="action == 'update'" type="text" name="adminId" id="adminId" class="form-control"
-                    value="{{user?.adminId}}" readonly>
-                <br>
-                <label class="form-label" for="username" class="fs-5 py-2">Username:</label>
-                <input *ngIf="action == 'update'" type="text" name="username" id="username" class="form-control"
-                    value="{{user?.username}}" [formControl]="username" readonly>
-                <input *ngIf="action == 'insert'" type="text" name="username" id="username" class="form-control"
-                    value="{{user?.username}}" [formControl]="username">
-                <br>
+            <form action="" *ngIf="action == 'update'">
+
+                <label class="form-label" for="adminId" class="fs-5 py-2">Id:</label>
+                <input type="text" name="adminId" id="adminId" class="form-control" value="{{user?.adminId}}" readonly>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <label class="form-label" for="username" class="fs-5 py-2">Username:</label>
+                            <input type="text" name="username" id="username" class="form-control"
+                                value="{{user?.username}}" readonly>
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="form-label" for="admin" class="fs-5 py-2">Admin?</label>
+                            <input type="checkbox" name="admin" id="admin" class="form-control" value="{{user?.admin}}"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
                 <label class="form-label" for="fullName" class="fs-5 py-2">Full name:</label>
-                <input type="text" name="fullName" id="fullName" class="form-control" [formControl]="fullName"
-                    value="{{user?.fullName}}">
-                <br>
+                <input type="text" name="fullName" id="fullName" class="form-control" value="{{user?.fullName}}">
+                <p *ngIf="usernameErr" class="text-danger">Username has to be filled! Username must be 6 characters
+                    long!</p>
                 <label class="form-label" for="email" class="fs-5 py-2">Email:</label>
-                <input type="text" name="email" id="email" class="form-control" [formControl]="email"
-                    value="{{user?.email}}">
-                <br>
+                <input type="email" name="email" id="email" class="form-control" value="{{user?.email}}">
+                <p *ngIf="emailErr" class="text-danger">E-mail has to be filled!</p>
                 <button *ngIf="action == 'update'" type='button' class="btn my-3 w-100 fs-4 fw-bold btn-primary"
                     (click)="updateUser()">Update</button>
+            </form>
+            <form action="" *ngIf="action == 'insert'">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <label class="form-label" for="username" class="fs-5 py-2">Username:</label>
+                            <input type="text" name="username" id="username" class="form-control"
+                                [formControl]="username">
+                            <p *ngIf="usernameErr" class="text-danger">Username has to be filled! Username must be 6
+                                characters
+                                long!</p>
+                            <p *ngIf="usernameExistsErr" class="text-danger">User with entered username already exists!
+                            </p>
+                        </div>
+                        <div class="col-lg-4 text-center">
+                            <label class="form-label" for="admin" class="fs-5 py-2">Admin</label>
+                            <br>
+                            <input class="form-check-input mt-0" type="checkbox" name="admin" id="admin"
+                                aria-label="Checkbox for following text input" [formControl]="admin">
+                        </div>
+                    </div>
+                </div>
+                <label class="form-label" for="fullName" class="fs-5 py-2">Full name:</label>
+                <input type="text" name="fullName" id="fullName" class="form-control" [formControl]="fullName">
+                <p *ngIf="fullNameErr" class="text-danger">Full Name has to be filled!
+                    long!</p>
+                <label class="form-label" for="email" class="fs-5 py-2">Email:</label>
+                <input type="email" name="email" id="email" class="form-control" [formControl]="email">
+                <p *ngIf="emailErr" class="text-danger">E-mail has to be filled!</p>
+                <label class="form-label" for="password" class="fs-5 py-2">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" [formControl]="password">
+                <p *ngIf="passErr" class="text-danger">Password must be filled!</p>
+                <label class="form-label" for="password_confirm" class="fs-5 py-2">Password Confirm:</label>
+                <input type="password" name="password_confirm" id="password_confirm" class="form-control"
+                    [formControl]="password_confirm">
+                <p *ngIf="notEqualPassErr" class="text-danger">Passwords must be equal!</p>
                 <button *ngIf="action == 'insert'" type='button' class="btn my-3 w-100 fs-4 fw-bold btn-primary"
                     (click)="insertUser()">Insert</button>
             </form>
         </div>
 
-        <div class="toast">
+        <div class="toast updated">
             <div class="toast-header">
                 <strong class="mr-auto">Success</strong>
             </div>
             <div class="toast-body">
                 User successfully updated!
+            </div>
+        </div>
+        <div class="toast created">
+            <div class="toast-header">
+                <strong class="mr-auto">Success</strong>
+            </div>
+            <div class="toast-body">
+                User successfully created!
             </div>
         </div>
     </div>

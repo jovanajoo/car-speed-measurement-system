@@ -12,7 +12,7 @@ import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, },
   { path: 'panel', component: PanelComponent },
   { path: 'sensors', component: SensorsComponent },
   { path: 'sensor/:action/:serial_no', component: SensorComponent },

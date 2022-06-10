@@ -20,8 +20,12 @@ export class UsersService {
     return this.http.get<User[]>('http://localhost:5000/api/administrators/get');
   }
 
-  getUsersById(adminId?: number): Observable<User> {
+  getUserById(adminId?: number): Observable<User> {
     return this.http.get<User>('http://localhost:5000/api/administrators/get/' + adminId);
+  }
+
+  getUserByUsername(username?: string): Observable<User> {
+    return this.http.get<User>('http://localhost:5000/api/administrators/GetByUsername/' + username);
   }
 
   deleteUserById(adminId?: number): Observable<any> {
@@ -34,5 +38,9 @@ export class UsersService {
 
   insertUser(user?: User): Observable<User> {
     return this.http.post<User>('http://localhost:5000/api/administrators/insert', JSON.stringify(user), this.httpOptions);
+  }
+
+  usernameExists(username?: string): Observable<any> {
+    return this.http.get('http://localhost:5000/api/administrators/UsernameExists/' + username);
   }
 }
